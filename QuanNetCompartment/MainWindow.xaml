@@ -1,0 +1,113 @@
+﻿<Window x:Class="QuanNetCompartment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanNetCompartment"
+        mc:Ignorable="d"
+        Title="分仓系统" Height="1025" Width="1600" Background="#00AAEE" Icon="image/logo.ico" WindowStartupLocation="CenterScreen">
+    <Grid Margin="4" UseLayoutRounding="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380*"/>
+            <ColumnDefinition Width="410*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="190"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+            <!--<GridSplitter Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="3"/>-->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2" Background="#00AAEE" Margin="5,0,5,0">
+            <Image Width="20" Height="20" Source="image/version.png"/>
+            <TextBlock Text="持仓细节" Style="{StaticResource CustomTextBlock}" Foreground="White"/>
+        </StackPanel>
+        <ListView x:Name="lvAllPositionDetail" Grid.ColumnSpan="2"  View="{StaticResource DetailPositionGridView}" Grid.Row="1" Margin="5,0,5,0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2"  Background="#F6F6F6" Margin="6,0,6,5">
+            <TextBlock Text="仓位总市值：" Style="{StaticResource CustomTextBlock}"/>
+            <TextBlock x:Name="txtPosValue" Width="50" Text="1000" Style="{StaticResource CustomTextBlock}"/>
+            <TextBlock Text="持仓盈亏：" Style="{StaticResource CustomTextBlock}"/>
+            <TextBlock x:Name="txtPosProfit" Text="0" Width="50" Style="{StaticResource CustomTextBlock}"/>
+            <TextBlock Text="结算盈亏：" Style="{StaticResource CustomTextBlock}"/>
+            <TextBlock x:Name="txtBalanceProfit" Text="0"  Style="{StaticResource CustomTextBlock}"/>
+        </StackPanel>
+
+        <!--交易监控-->
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2"  Background="#00AAEE" Margin="5,0,5,0">
+            <Image Width="20" Height="20" Source="image/version.png"/>
+            <TextBlock Text="交易监控-委托记录" Style="{StaticResource CustomTextBlock}" Foreground="White"/>
+        </StackPanel>
+        <TabControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="tabOrders" Style="{StaticResource myTabControlStyle}">
+            <TabItem Header="委托记录" IsSelected="True">
+                <ListView x:Name="lvAllOrder" View="{StaticResource OrderFieldGridView}" />
+            </TabItem>
+            <TabItem Header="当日成交">
+                <ListView x:Name="lvTrade" View="{StaticResource TradeFieldGridView}"/>
+            </TabItem>
+        </TabControl>
+        
+        <!--可撤委托-->
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2"  Grid.Row="5" Background="#00AAEE" Margin="5,0,5,0">
+            <Image Width="20" Height="20" Source="image/version.png"/>
+            <TextBlock Text="委托订单" Style="{StaticResource CustomTextBlock}" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2"  Background="#00AAEE">
+            <Button Width="40"  Height="20" Name="btnSelectAllOrder" Content="全选" Click="btnSelectAllOrder_Click"/>
+            <Button Width="40"  Height="20" Name="btnSelectNoOrder" Content="取消" Click="btnSelectNoOrder_Click"/>
+            <Button Width="40"  Height="20" Content="撤单" Name="btnCancelOrder" Click="btnCancelOrder_Click"/>
+        </StackPanel>
+        <ListView x:Name="lvCanCancelOrder" Grid.ColumnSpan="2"  View="{StaticResource CanCancelGridView}" Grid.Row="7"/>
+        
+        <!--管理模块-->
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Background="#00AAEE" Margin="5,0,5,0">
+            <Image Width="20" Height="20" Source="image/version.png"/>
+            <TextBlock x:Name="txtVersion" Text="交易系统1.0" Style="{StaticResource CustomTextBlock}" Foreground="White"/>
+        </StackPanel>
+
+
+        <!--管理模块-->
+        <StackPanel Orientation="Horizontal" Grid.Row="9"  Margin="5,0,5,0">
+            <Button BorderThickness="1" Name="btnAddFastTrade" Click="btnAddFastTrade_Click">
+                <Image Width="60" Height="60" Source="image/jsjy.png"/>
+            </Button>
+            <Button BorderThickness="1">
+                <Image Width="60" Height="60" Source="image/setting.png"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="10" Background="White" Margin="5,0,5,0">
+            <Image Width="120" Height="120" Source="image/logo.png" Margin="5,0,5,0"/>
+            <StackPanel Orientation="Vertical">
+            <TextBlock Text="账户名:" Margin="5" FontSize="16"/>
+            <TextBlock Text="账户余额:" Margin="5" FontSize="16"/>
+            <TextBlock Text="持仓市值:" Margin="5" FontSize="16"/>
+            <TextBlock Text="当前浮赢:" Margin="5" FontSize="16"/>
+            <TextBlock Text="今日盈亏:" Margin="5" FontSize="16"/>
+            <TextBlock Text="停机位:" Margin="5" FontSize="16"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="11" Margin="5,0,0,0">
+            <TextBlock Text="状态已连接" VerticalAlignment="Center" Margin="5,0,5,0" Foreground="White" FontSize="16"/>
+            <Button Content="消息中心" Width="80"  FontSize="16" VerticalAlignment="Center"/>
+            <TextBlock Name="txtTime" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="8" Background="#00AAEE" Margin="5,0,5,0">
+            <Image Width="20" Height="20" Source="image/version.png"/>
+            <TextBlock Text="股票池"  Style="{StaticResource CustomTextBlock}" Foreground="White"/>
+        </StackPanel>
+        <ListView x:Name="lvAllPosition" Grid.RowSpan="2"  View="{StaticResource PositionGridView}" Grid.Column="1" Grid.Row="9"/>
+
+
+    </Grid>
+</Window>
+

@@ -1,0 +1,3 @@
+C:\Users\Administrator\Desktop\分仓系统\CompartmentProject\QuanNetCompartment\bin\Debug\QuanNetCompartment.exe.config
+C:\Users\Administrator\Desktop\分仓系统\QuanNetCompartment\bin\Debug\QuanNetCompartment.exe.config
+C:\Users\Administrator\Desktop\分仓系统\Compartment\QuanNetCompartment\bin\Debug\QuanNetCompartment.exe.config

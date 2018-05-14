@@ -1,0 +1,22 @@
+﻿<Window x:Class="QuanNetCompartment.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="交易监控-委托记录"   Height="250" Width="770" BorderBrush="Blue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="770*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Grid.Column="0" x:Name="tabOrders" Style="{StaticResource myTabControlStyle}">
+            <TabItem Header="委托记录" IsSelected="True">
+                <ListView x:Name="lvAllOrder" View="{StaticResource OrderFieldGridView}" />
+            </TabItem>
+            <TabItem Header="当日成交">
+                <ListView x:Name="lvTrade" View="{StaticResource TradeFieldGridView}"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+

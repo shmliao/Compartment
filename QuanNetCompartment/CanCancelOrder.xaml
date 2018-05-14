@@ -1,0 +1,22 @@
+﻿<Window x:Class="QuanNetCompartment.CanCancelOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="委托订单"  Height="250" Width="770" BorderBrush="Blue" WindowStyle="None" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="296*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="220"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Background="LightGray" Grid.ColumnSpan="2">
+            <Button Width="30"  Height="30" />
+            <Button Width="30"  Height="30" />
+            <Button Width="30"  Height="30" />
+        </StackPanel>
+        <ListView x:Name="lvAllPosition" View="{StaticResource OrderFieldGridView}" Grid.Row="1" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
+
